@@ -1,0 +1,8 @@
+.DS_Store
+*.pyc
+*._*
+*.vim/sessions/
+*.vim/tmp/
+vimfiles/sessions/
+vimfiles/tmp/
+*doc/tags
