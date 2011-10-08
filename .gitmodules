@@ -1,0 +1,3 @@
+[submodule ".vim/bundle/vim-colors-jellybeans"]
+	path = .vim/bundle/vim-colors-jellybeans
+	url = git://github.com/nanotech/jellybeans.vim.git
