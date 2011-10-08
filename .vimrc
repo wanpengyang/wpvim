@@ -24,10 +24,11 @@ set backup		" keep a backup file
 "set basic environment
 set modelines=0
 set background=dark     " Assume a dark background
+colorscheme jellybeans
 set encoding=utf-8 "encoding to utf-8
 set fileencoding=utf-8 "set encoding when opening files to utf-8
 set ch=2		" Make command line two lines high
-set guifon=DejaVu\ Sans\ Mono:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
+set guifont=DejaVu\ Sans\ Mono:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
 set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set guioptions=r "Only Right-hand scrollbar is always present.
@@ -127,4 +128,7 @@ function! InitializeDirectories()
   endfor
 endfunction
 call InitializeDirectories() 
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"automatically apply the chages in vimrc to vim without restart
+autocmd! bufwritepost .vimrc source %
