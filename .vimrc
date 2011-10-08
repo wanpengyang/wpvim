@@ -29,10 +29,9 @@ set fileencoding=utf-8 "set encoding when opening files to utf-8
 set ch=2		" Make command line two lines high
 set guifon=DejaVu\ Sans\ Mono:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
 set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-set guioptions=r
-
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set guioptions=r "Only Right-hand scrollbar is always present.
+let mapleader = "," "map , as <leader> key instead of \ by default
 set autochdir		"auto change dir to where the current file is
 set hidden 		"switching buffers without saving
 set ruler		" show the cursor position all the time
@@ -50,7 +49,7 @@ set showmatch		" show matching bracket for a while.
 set lbr			" break the line by words
 set scrolloff=3		" show at least 3 lines around the current cursor position
 set completeopt=longest,menu "set on the fly completion
-
+set mouse=a
 set list
 set listchars=tab:▸\ ,eol:¬
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
@@ -73,9 +72,28 @@ nnoremap <space> za
 nnoremap / /\v
 vnoremap / /\v
 
+"search with ease
+set smartcase
+set gdefault "all matches in a line a subsituted instead of one.
+set hlsearch
+set magic
+
+"clearing highlighted search
+nmap <silent> <leader>/ :nohlsearch<CR>
 
 
+"switch between windows with leader key 
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
+"navigate between tabs and buffers
+nnoremap <leader>bn :bnext<cr>
+nnoremap <leader>bp :bprev<cr>
+nnoremap tn :tabnext<cr>
+nnoremap tp :tabprev<cr>
+nnoremap tt :tabnew<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""
 " create tmp folder and the subfolders if they don't exist.
 function! InitializeDirectories()
