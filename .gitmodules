@@ -19,6 +19,3 @@
 [submodule "tagbar"]
 	path = tagbar
 	url = git://github.com/majutsushi/tagbar.git
-[submodule ".command-t"]
-	path = .command-t
-	url = git://github.com/wincent/Command-T.git
