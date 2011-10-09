@@ -19,3 +19,6 @@
 [submodule "tagbar"]
 	path = tagbar
 	url = git://github.com/majutsushi/tagbar.git
+[submodule ".vim/bundle/command-t"]
+	path = .vim/bundle/command-t
+	url = git://github.com/wincent/Command-T.git
