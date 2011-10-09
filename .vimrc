@@ -24,6 +24,9 @@ set backup		" keep a backup file
 "set basic environment
 set modelines=0
 set background=dark     " Assume a dark background
+if has('unix') && !has('mac')
+    set t_Co=256 "enable 256 colors"
+endif
 colorscheme jellybeans
 set encoding=utf-8 "encoding to utf-8
 set fileencoding=utf-8 "set encoding when opening files to utf-8
@@ -51,11 +54,15 @@ set lbr			" break the line by words
 set scrolloff=3		" show at least 3 lines around the current cursor position
 set completeopt=longest,menu "set on the fly completion
 set mouse=a
+syntax on "set syntax color on
+set lazyredraw
 set list
 set listchars=tab:▸\ ,eol:¬
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
 
 "disable tabs
+set nowrap                     	" wrap long lines
+set autoindent                 	" indent at the same level of the previous line
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -70,6 +77,7 @@ endif
 "space toggle folds!"
 nnoremap <space> za
 "use sane regx"
+set gdefault					" the /g flag on :s substitutions by default
 nnoremap / /\v
 vnoremap / /\v
 
@@ -82,6 +90,9 @@ set magic
 "clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
 
+set wildignore+=*.pyc,.hg,.git
+set matchtime=3 "Tenths of a second to show a matching pattern
+set showbreak=↪ " show break when the line is wraped.
 
 "switch between windows with leader key 
 nnoremap <leader>h <C-w>h
