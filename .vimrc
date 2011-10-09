@@ -47,9 +47,7 @@ set visualbell		"flash screen when bell rings
 set cursorline		"highline cursor line
 set ttyfast		"indicate faster terminal connection
 set laststatus=2	"always show status line
-set incsearch		" do incremental searching
 set nu			" show line number
-set showmatch		" show matching bracket for a while.
 set lbr			" break the line by words
 set scrolloff=3		" show at least 3 lines around the current cursor position
 set completeopt=longest,menu "set on the fly completion
@@ -82,10 +80,13 @@ nnoremap / /\v
 vnoremap / /\v
 
 "search with ease
-set smartcase
 set gdefault "all matches in a line a subsituted instead of one.
-set hlsearch
+set showmatch					" show matching brackets/parenthesis
+set incsearch					" find as you type search
+set hlsearch					" highlight search terms
 set magic
+set ignorecase					" case insensitive search
+set smartcase					" case sensitive when uc present
 
 "clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -106,7 +107,34 @@ nnoremap <leader>bp :bprev<cr>
 nnoremap tn :tabnext<cr>
 nnoremap tp :tabprev<cr>
 nnoremap tt :tabnew<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""Plugins"""""""""""
+
+" NerdTree {
+    map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+    map <leader>e :NERDTreeFind<CR>
+    nmap <leader>nt :NERDTreeFind<CR>
+
+    let NERDTreeShowBookmarks=1
+    let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+    let NERDTreeChDirMode=0
+    let NERDTreeQuitOnOpen=1
+    let NERDTreeShowHidden=1
+    let NERDTreeKeepTreeInNewTab=1
+" }
+
+
+
+
+
+
+
+
+
+
+
+"""""Functions""""""""""""""""""""""""""""""""""""""""""""
+
 " create tmp folder and the subfolders if they don't exist.
 function! InitializeDirectories()
   let separator = "."
