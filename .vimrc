@@ -117,8 +117,8 @@ nnoremap tt :tabnew<cr>
 
     let NERDTreeShowBookmarks=1
     let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-    let NERDTreeChDirMode=0
-    let NERDTreeQuitOnOpen=1
+    let NERDTreeChDirMode=0 "Current working directory is never changed by the NERD tree
+    let NERDTreeQuitOnOpen=1 "the Nerdtree window will be close after a file is opend.
     let NERDTreeShowHidden=1
     let NERDTreeKeepTreeInNewTab=1
 " }
