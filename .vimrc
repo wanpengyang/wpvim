@@ -124,8 +124,37 @@ nnoremap tt :tabnew<cr>
 " }
 
 
+"------  Tagbar Options  ------
+" http://adamyoung.net/Exuberant-Ctags-OS-X
+" http://www.vim.org/scripts/script.php?script_id=273
+" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_width=26
+noremap <silent> <Leader>y :TagbarToggle<CR>
 
 
+"------  Buffers  ------
+" Ctrl Left & Right move between buffers
+" (need to find out how to disable this within nerdtree buffer)
+noremap <silent> <C-left> :bprev<CR>
+noremap <silent> <C-h> :bprev<CR>
+noremap <silent> <C-right> :bnext<CR>
+noremap <silent> <C-l> :bnext<CR>
+" Closes the current buffer
+nnoremap <silent> <Leader>q :Bclose<CR>
+" Closes the current window
+nnoremap <silent> <Leader>Q <C-w>c
+
+"------  Fugitive  ------ 
+"https://github.com/tpope/vim-fugitive
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gr :Gremove<CR>
+nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gm :Gmove 
+nnoremap <Leader>gp :Ggrep 
+nnoremap <Leader>gR :Gread<CR>
+nnoremap <Leader>gg :Git 
+nnoremap <Leader>gd :Gdiff<CR>
 
 
 
