@@ -155,7 +155,10 @@ nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gg :Git 
 nnoremap <Leader>gd :Gdiff<CR>
 
+"------- Supertab -----
 
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 
 

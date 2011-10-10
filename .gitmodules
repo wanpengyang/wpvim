@@ -28,3 +28,9 @@
 [submodule ".vim/bundle/bclose"]
 	path = .vim/bundle/bclose
 	url = git://github.com/bcaccinolo/bclose.git
+[submodule ".vim/bundle/phpcomplete"]
+	path = .vim/bundle/phpcomplete
+	url = git://github.com/shawncplus/phpcomplete.vim.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
