@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/command-t"]
 	path = .vim/bundle/command-t
 	url = git://github.com/wincent/Command-T.git
+[submodule ".vim/bundle/buftabs"]
+	path = .vim/bundle/buftabs
+	url = git://github.com/vim-scripts/buftabs.git
