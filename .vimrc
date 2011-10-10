@@ -110,7 +110,7 @@ nnoremap tt :tabnew<cr>
 
 """""Plugins"""""""""""
 
-" NerdTree {
+"------ NerdTree --------------
     map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
     map <leader>e :NERDTreeFind<CR>
     nmap <leader>nt :NERDTreeFind<CR>
@@ -121,7 +121,6 @@ nnoremap tt :tabnew<cr>
     let NERDTreeQuitOnOpen=1 "the Nerdtree window will be close after a file is opend.
     let NERDTreeShowHidden=1
     let NERDTreeKeepTreeInNewTab=1
-" }
 
 
 "------  Tagbar Options  ------
