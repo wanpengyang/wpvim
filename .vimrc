@@ -2,10 +2,21 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Windows Compatible {
+" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+" across (heterogeneous) systems easier.
+if has('win32') || has('win64')
+    set runtimepath=$HOME\.vim,$VIM\vimfiles,$VIMRUNTIME,$VIM\vimfiles\after,$HOME\.vim\after
+    "let Tlist_Ctags_Cmd=$HOME.'\ctags\ctags.exe'
+    let g:tagbar_ctags_bin=$HOME.'\ctags\ctags.exe'
+endif
+" }
+
   "add pathogen for easier bundles management
   filetype off
-  call pathogen#runtime_append_all_bundles()
+  runtime! autoload/pathogen.vim 
   call pathogen#helptags()
+  call pathogen#runtime_append_all_bundles()
   filetype plugin indent on
 
 "use system clipboard
@@ -64,13 +75,6 @@ set autoindent                 	" indent at the same level of the previous line
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-" Windows Compatible {
-" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-" across (heterogeneous) systems easier. 
-if has('win32') || has('win64')
-	set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-endif
-" }
 
 "space toggle folds!"
 nnoremap <space> za
@@ -200,5 +204,7 @@ endfunction
 call InitializeDirectories() 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
+if !has('win32') && !has('win64')
 "automatically apply the chages in vimrc to vim without restart
 autocmd! bufwritepost .vimrc source %
+endif
