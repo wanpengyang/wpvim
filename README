@@ -8,6 +8,8 @@ How to install:
    ln -s /path/to/wpvim/.vimrc .vimrc
    ln -s /path/to/wpvim/.vim .vim 
 3. for windows use mklink
+4. git submodule update --init --recursive 
+
 
 
 How to install command-t
