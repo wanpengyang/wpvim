@@ -1,11 +1,10 @@
 My own vim setup. The goal is to have one setup file for windows/OSX/Linux
 Main language is PHP and Python. 
 
-How to install command-t
-1. make sure Vim is compiled with ruby support.
-2. make sure ruby is installed. 
-3. in windows , follow the steps here: http://rfbrazier.posterous.com/installing-the-command-t-vim-plugin-on-window 
-4. go to ruby/command-t
-5. ruby extconf.rb
-6. make
-
+How to install:
+1. git clone 
+2. for OSX and Linux: 
+   cd ~
+   ln -s /path/to/wpvim/.vimrc .vimrc
+   ln -s /path/to/wpvim/.vim .vim 
+3. for
