@@ -45,7 +45,7 @@ set ch=2		" Make command line two lines high
 set guifont=DejaVu\ Sans\ Mono:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
 set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set guioptions=r "Only Right-hand scrollbar is always present.
+"set guioptions=r "Only Right-hand scrollbar is always present.
 let mapleader = "," "map , as <leader> key instead of \ by default
 set autochdir		"auto change dir to where the current file is
 set hidden 		"switching buffers without saving
@@ -113,6 +113,10 @@ nnoremap tp :tabprev<cr>
 nnoremap tt :tabnew<cr>
 
 """""Plugins"""""""""""
+"------------Session---------------
+let g:session_directory=$HOME.'/.vim/tmp/session'
+let g:session_autoload='yes'
+let g:session_autosave='yes'
 
 "------ NerdTree --------------
     map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
@@ -200,6 +204,9 @@ function! InitializeDirectories()
           exec "set " . settingname . "=" . directory
 	  endif
   endfor
+  if !isdirectory(parent.'/'.prefix.'session/')
+      call mkdir(parent.'/'.prefix.'session/')
+  endif
 endfunction
 call InitializeDirectories() 
 """""""""""""""""""""""""""""""""""""""""""""""""""

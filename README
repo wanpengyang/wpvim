@@ -9,3 +9,6 @@ How to install command-t
 5. ruby extconf.rb
 6. make
 
+Ctags.exe in windows
+1. Download ctags from http://ctags.sourceforge.net/
+2. put ctags.exe in $HOME/ctags
