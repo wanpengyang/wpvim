@@ -1,14 +1,29 @@
 My own vim setup. The goal is to have one setup file for windows/OSX/Linux
 Main language is PHP and Python. 
 
+How to install:
+1. git clone 
+2. for OSX and Linux: 
+   cd ~
+   ln -s /path/to/wpvim/.vimrc .vimrc
+   ln -s /path/to/wpvim/.vim .vim 
+3. for windows use mklink
+4. git submodule update --init --recursive 
+
+
+
 How to install command-t
 1. make sure Vim is compiled with ruby support.
-2. make sure ruby is installed. 
-3. in windows , follow the steps here: http://rfbrazier.posterous.com/installing-the-command-t-vim-plugin-on-window 
+2. make sure ruby is installed.
+3. in windows , follow the steps here: http://rfbrazier.posterous.com/installing-the-command-t-vim-plugin-on-window
 4. go to ruby/command-t
 5. ruby extconf.rb
+<<<<<<< HEAD
 6. make
 
 Ctags.exe in windows
 1. Download ctags from http://ctags.sourceforge.net/
 2. put ctags.exe in $HOME/ctags
+=======
+6. make
+>>>>>>> 2ff0cb14f7a25c177e20d5fcd816491616f43c7f
