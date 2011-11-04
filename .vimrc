@@ -47,7 +47,7 @@ set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 "set guioptions=r "Only Right-hand scrollbar is always present.
 let mapleader = "," "map , as <leader> key instead of \ by default
-set autochdir		"auto change dir to where the current file is
+"set autochdir		"auto change dir to where the current file is. 
 set hidden 		"switching buffers without saving
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
