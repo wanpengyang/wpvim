@@ -38,16 +38,22 @@ set background=light     " Assume a dark background
 if has('unix') && !has('mac')
     set t_Co=256 "enable 256 colors"
 endif
-colorscheme solarized
+colorscheme jellybeans
 set encoding=utf-8 "encoding to utf-8
 set fileencoding=utf-8 "set encoding when opening files to utf-8
 set ch=2		" Make command line two lines high
-set guifont=DejaVu\ Sans\ Mono:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
-set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
+set guifont=DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
+set guifontwide=SimHei:h11,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 "set guioptions=r "Only Right-hand scrollbar is always present.
+    " Remove all the UI cruft
+    set go-=T
+    set go-=l
+    set go-=L
+    set go-=r
+    set go-=R
 let mapleader = "," "map , as <leader> key instead of \ by default
-set autochdir		"auto change dir to where the current file is
+"set autochdir		"auto change dir to where the current file is. 
 set hidden 		"switching buffers without saving
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -67,7 +73,13 @@ syntax on "set syntax color on
 set lazyredraw
 set list
 set listchars=tab:▸\ ,eol:¬
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
+"set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
+" Powerline {{{
+
+let g:Powerline_symbols = 'fancy'
+"let g:Powerline_theme = 'sjl'
+
+" }}}
 
 "disable tabs
 set nowrap                     	" wrap long lines
@@ -113,6 +125,10 @@ nnoremap tp :tabprev<cr>
 nnoremap tt :tabnew<cr>
 
 """""Plugins"""""""""""
+"------------Session---------------
+let g:session_directory=$HOME.'/.vim/tmp/session'
+let g:session_autoload='yes'
+let g:session_autosave='yes'
 
 "------ NerdTree --------------
     map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
@@ -197,7 +213,7 @@ function! InitializeDirectories()
 		  echo "Try: mkdir -p " . directory
 	  else  
           let directory = substitute(directory, " ", "\\\\ ", "")
-          exec "set " . settingname . "=" . directory
+          exec "set " . settingname . "=" . directory."/"
 	  endif
   endfor
   "add session folder if it doesn't exist
