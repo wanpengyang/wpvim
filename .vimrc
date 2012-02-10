@@ -42,10 +42,9 @@ colorscheme jellybeans
 set encoding=utf-8 "encoding to utf-8
 set fileencoding=utf-8 "set encoding when opening files to utf-8
 set ch=2		" Make command line two lines high
-set guifont=DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
-set guifontwide=SimHei:h11,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use SimHei for Chinese, Monaco for mac
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12,DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
+set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-"set guioptions=r "Only Right-hand scrollbar is always present.
     " Remove all the UI cruft
     set go-=T
     set go-=l
@@ -57,7 +56,7 @@ let mapleader = "," "map , as <leader> key instead of \ by default
 set hidden 		"switching buffers without saving
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
-set showmode		" display current mode
+"set showmode		" display current mode
 set wildmenu		" show enhanced completion 
 set wildmode=list:longest "together with wildmenu
 set visualbell		"flash screen when bell rings
