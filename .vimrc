@@ -34,18 +34,18 @@ set backup		" keep a backup file
 
 "set basic environment
 set modelines=0
-set background=dark     " Assume a dark background
+set background=light     " Assume a dark background
 if has('unix') && !has('mac')
     set t_Co=256 "enable 256 colors"
 endif
-colorscheme jellybeans
+colorscheme solarized
 set encoding=utf-8 "encoding to utf-8
 set fileencoding=utf-8 "set encoding when opening files to utf-8
 set ch=2		" Make command line two lines high
 set guifont=DejaVu\ Sans\ Mono:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
 set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set guioptions=r "Only Right-hand scrollbar is always present.
+"set guioptions=r "Only Right-hand scrollbar is always present.
 let mapleader = "," "map , as <leader> key instead of \ by default
 set autochdir		"auto change dir to where the current file is
 set hidden 		"switching buffers without saving
@@ -200,6 +200,10 @@ function! InitializeDirectories()
           exec "set " . settingname . "=" . directory
 	  endif
   endfor
+  "add session folder if it doesn't exist
+  if !isdirectory(parent.'/'.prefix.'session/')
+      call mkdir(parent.'/'.prefix.'session/')
+  endif
 endfunction
 call InitializeDirectories() 
 """""""""""""""""""""""""""""""""""""""""""""""""""
