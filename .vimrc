@@ -357,7 +357,38 @@ vnoremap <leader>Ar :right<cr>
 " Better Completion
 set completeopt=longest,menuone,preview
 " }}}
-"""""Plugins"""""""""""
+
+" Plugin settings --------------------------------------------------------- {{{
+" Autoclose {{{
+
+nmap <Leader>x <Plug>ToggleAutoCloseMappings
+
+" }}}
+" Rainbox Parentheses {{{
+
+nnoremap <leader>R :RainbowParenthesesToggle<cr>
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+
+
+" }}}
 "------------Session---------------
 let g:session_directory=$HOME.'/.vim/tmp/session'
 let g:session_autoload='yes'
@@ -387,14 +418,14 @@ noremap <silent> <Leader>y :TagbarToggle<CR>
 "------  Buffers  ------
 " Ctrl Left & Right move between buffers
 " (need to find out how to disable this within nerdtree buffer)
-noremap <silent> <C-left> :bprev<CR>
-noremap <silent> <C-h> :bprev<CR>
-noremap <silent> <C-right> :bnext<CR>
-noremap <silent> <C-l> :bnext<CR>
-" Closes the current buffer
-nnoremap <silent> <Leader>q :Bclose<CR>
-" Closes the current window
-nnoremap <silent> <Leader>Q <C-w>c
+"noremap <silent> <C-left> :bprev<CR>
+"noremap <silent> <C-h> :bprev<CR>
+"noremap <silent> <C-right> :bnext<CR>
+"noremap <silent> <C-l> :bnext<CR>
+"" Closes the current buffer
+"nnoremap <silent> <Leader>q :Bclose<CR>
+"" Closes the current window
+"nnoremap <silent> <Leader>Q <C-w>c
 
 "------  Fugitive  ------ 
 "https://github.com/tpope/vim-fugitive
@@ -408,12 +439,22 @@ nnoremap <Leader>gR :Gread<CR>
 nnoremap <Leader>gg :Git 
 nnoremap <Leader>gd :Gdiff<CR>
 
-"------- Supertab -----
+" Supertab {{{
 
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabLongestHighlight = 1
 
+"}}}
+" Syntastic {{{
 
+let g:syntastic_enable_signs = 1
+let g:syntastic_disabled_filetypes = ['html']
+let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
+"let g:syntastic_jsl_conf = '$HOME/.vim/jsl.conf'
+
+" }}}
+
+" }}}
 
 " Folding ----------------------------------------------------------------- {{{
 
