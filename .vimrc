@@ -48,7 +48,7 @@ set undoreload=1000
 set backup		" keep a backup file
 set noswapfile                    " It's 2012, Vim.
 set modelines=0
-set background=dark     " Assume a dark background
+set background=light     " Assume a dark background
 if has('unix') && !has('mac')
     set t_Co=256 "enable 256 colors"
 endif
@@ -56,9 +56,9 @@ colorscheme jellybeans
 
 set encoding=utf-8 "encoding to utf-8
 set fileencoding=utf-8 "set encoding when opening files to utf-8
-set ch=1		" Make command line two lines high
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12,DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h13,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
-set guifontwide=SimHei:h11,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use SimHei for Chinese, Monaco for mac
+set ch=2		" Make command line two lines high
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12,DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
+set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 
 " Remove all the UI cruft
@@ -72,7 +72,7 @@ let mapleader = "," "map , as <leader> key instead of \ by default
 set hidden 		"switching buffers without saving
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
-set showmode		" display current mode
+"set showmode		" display current mode
 set wildmenu		" show enhanced completion 
 set wildmode=list:longest "together with wildmenu
 set wildignore+=.hg,.git,.svn                    " Version control
@@ -302,6 +302,7 @@ function! InitializeDirectories()
           exec "set " . settingname . "=" . directory."/"
 	  endif
   endfor
+  "add session folder if it doesn't exist
   if !isdirectory(parent.'/'.prefix.'session/')
       call mkdir(parent.'/'.prefix.'session/')
   endif
