@@ -25,9 +25,6 @@
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
-[submodule ".vim/bundle/bclose"]
-	path = .vim/bundle/bclose
-	url = git://github.com/bcaccinolo/bclose.git
 [submodule ".vim/bundle/phpcomplete"]
 	path = .vim/bundle/phpcomplete
 	url = git://github.com/shawncplus/phpcomplete.vim.git
