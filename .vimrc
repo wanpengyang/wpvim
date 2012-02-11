@@ -56,7 +56,7 @@ colorscheme jellybeans
 
 set encoding=utf-8 "encoding to utf-8
 set fileencoding=utf-8 "set encoding when opening files to utf-8
-set ch=2		" Make command line two lines high
+set ch=1		" Make command line two lines high
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12,DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
 set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
@@ -82,10 +82,6 @@ set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.pyc                            " Python byte code
 set wildignore+=*.orig                           " Merge resolution files
-
-" Clojure/Leiningen
-set wildignore+=classes
-set wildignore+=lib
 set visualbell		"flash screen when bell rings
 set cursorline		"highline cursor line
 set ttyfast		"indicate faster terminal connection
@@ -94,7 +90,9 @@ set cpoptions+=J
 set nu			" show line number
 set lbr			" break the line by words
 set scrolloff=3		" show at least 3 lines around the current cursor position
-set completeopt=longest,menu "set on the fly completion
+set sidescroll=1
+set sidescrolloff=10
+set virtualedit+=block
 set mouse=a
 syntax on "set syntax color on
 set lazyredraw
@@ -131,9 +129,10 @@ set autoindent                 	" indent at the same level of the previous line
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set textwidth=80
+set formatoptions=qrn1
+set colorcolumn=+1
 
-"space toggle folds!"
-nnoremap <space> za
 "use sane regx"
 set gdefault					" the /g flag on :s substitutions by default
 nnoremap / /\v
@@ -151,9 +150,27 @@ set smartcase					" case sensitive when uc present
 "clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-set wildignore+=*.pyc,.hg,.git
+runtime macros/matchit.vim
+map <tab> %
+
 set matchtime=3 "Tenths of a second to show a matching pattern
 set showbreak=↪ " show break when the line is wraped.
+
+" Keep search matches in the middle of the window and pulse the line when moving
+" to them.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Don't move on *
+nnoremap * *<c-o>
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+
+" Window resizing
+nnoremap <c-left> 5<c-w>>
+nnoremap <c-right> 5<c-w><
 
 "switch between windows with leader key 
 nnoremap <leader>h <C-w>h
@@ -168,6 +185,178 @@ nnoremap tn :tabnext<cr>
 nnoremap tp :tabprev<cr>
 nnoremap tt :tabnew<cr>
 
+"}}}
+
+" Various filetype-specific stuff ----------------------------------------- {{{
+" CSS and LessCSS {{{
+
+augroup ft_css
+    au!
+
+    au BufNewFile,BufRead *.less setlocal filetype=less
+
+    au Filetype less,css setlocal foldmethod=marker
+    au Filetype less,css setlocal foldmarker={,}
+    au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
+    au Filetype less,css setlocal iskeyword+=-
+
+    " Use <leader>S to sort properties.  Turns this:
+    "
+    "     p {
+    "         width: 200px;
+    "         height: 100px;
+    "         background: red;
+    "
+    "         ...
+    "     }
+    "
+    " into this:
+
+    "     p {
+    "         background: red;
+    "         height: 100px;
+    "         width: 200px;
+    "
+    "         ...
+    "     }
+    au BufNewFile,BufRead *.less,*.css nnoremap <buffer> <localleader>S ?{<CR>jV/\v^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
+    " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
+    " positioned inside of them AND the following code doesn't get unfolded.
+    au BufNewFile,BufRead *.less,*.css inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
+augroup END
+" }}}
+" HTML and HTMLDjango {{{
+
+augroup ft_html
+    au!
+
+    au BufNewFile,BufRead *.html setlocal filetype=htmldjango
+    au FileType html,jinja,htmldjango setlocal foldmethod=manual
+
+    " Use <localleader>f to fold the current tag.
+    au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>f Vatzf
+
+    " Use Shift-Return to turn this:
+    "     <tag>|</tag>
+    "
+    " into this:
+    "     <tag>
+    "         |
+    "     </tag>
+    au FileType html,jinja,htmldjango nnoremap <buffer> <s-cr> vit<esc>a<cr><esc>vito<esc>i<cr><esc>
+
+    " Smarter pasting
+    au FileType html,jinja,htmldjango nnoremap <buffer> p :<C-U>YRPaste 'p'<CR>v`]=`]
+    au FileType html,jinja,htmldjango nnoremap <buffer> P :<C-U>YRPaste 'P'<CR>v`]=`]
+    au FileType html,jinja,htmldjango nnoremap <buffer> π :<C-U>YRPaste 'p'<CR>
+    au FileType html,jinja,htmldjango nnoremap <buffer> ∏ :<C-U>YRPaste 'P'<CR>
+
+    " Indent tag
+    au FileType html,jinja,htmldjango nnoremap <buffer> <localleader>= Vat=
+
+    " Django tags
+    au FileType jinja,htmldjango inoremap <buffer> <c-t> {%<space><space>%}<left><left><left>
+
+    " Django variables
+    au FileType jinja,htmldjango inoremap <buffer> <c-f> {{<space><space>}}<left><left><left>
+augroup END
+
+" }}}
+" Javascript {{{
+
+augroup ft_javascript
+    au!
+
+    au FileType javascript setlocal foldmethod=marker
+    au FileType javascript setlocal foldmarker={,}
+
+    " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
+    " positioned inside of them AND the following code doesn't get unfolded.
+    au Filetype javascript inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
+augroup END
+
+" }}}
+" Markdown {{{
+
+augroup ft_markdown
+    au!
+
+    au BufNewFile,BufRead *.m*down setlocal filetype=markdown
+
+    " Use <localleader>1/2/3 to add headings.
+    au Filetype markdown nnoremap <buffer> <localleader>1 yypVr=
+    au Filetype markdown nnoremap <buffer> <localleader>2 yypVr-
+    au Filetype markdown nnoremap <buffer> <localleader>3 I### <ESC>
+augroup END
+
+" }}}
+" Nginx {{{
+
+augroup ft_nginx
+    au!
+
+    au BufRead,BufNewFile /etc/nginx/conf/*                      set ft=nginx
+    au BufRead,BufNewFile /etc/nginx/sites-available/*           set ft=nginx
+    au BufRead,BufNewFile /usr/local/etc/nginx/sites-available/* set ft=nginx
+    au BufRead,BufNewFile vhost.nginx                            set ft=nginx
+
+    au FileType nginx setlocal foldmethod=marker foldmarker={,}
+augroup END
+
+" }}}
+" Python {{{
+
+augroup ft_python
+    au!
+
+    " au FileType python setlocal omnifunc=pythoncomplete#Complete
+    au FileType python setlocal define=^\s*\\(def\\\\|class\\)
+    au FileType python compiler nose
+    au FileType man nnoremap <buffer> <cr> :q<cr>
+    
+    " Jesus tapdancing Christ, built-in Python syntax, you couldn't let me
+    " override this in a normal way, could you?
+    au FileType python if exists("python_space_error_highlight") | unlet python_space_error_highlight | endif
+
+    " Jesus, Python.  Five characters of punctuation for a damn string?
+    au FileType python inoremap <buffer> <d-'> _(u'')<left><left>
+augroup END
+
+" }}}
+" Vim {{{
+
+augroup ft_vim
+    au!
+
+    au FileType vim setlocal foldmethod=marker
+    au FileType help setlocal textwidth=78
+    au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
+augroup END
+
+" }}}
+" }}}
+"
+" Convenience mappings ---------------------------------------------------- {{{
+
+" Change case
+nnoremap <C-u> gUiw
+inoremap <C-u> <esc>gUiwea
+
+" HTML tag closing
+inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
+
+" Align text
+nnoremap <leader>Al :left<cr>
+nnoremap <leader>Ac :center<cr>
+nnoremap <leader>Ar :right<cr>
+vnoremap <leader>Al :left<cr>
+vnoremap <leader>Ac :center<cr>
+vnoremap <leader>Ar :right<cr>
+
+" Better Completion
+set completeopt=longest,menuone,preview
+" }}}
 """""Plugins"""""""""""
 "------------Session---------------
 let g:session_directory=$HOME.'/.vim/tmp/session'
