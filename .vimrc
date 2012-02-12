@@ -18,7 +18,6 @@ endif
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'buftabs')
-call add(g:pathogen_disabled, 'bclose')
 call add(g:pathogen_disabled, 'command-t')
 
 "}}}
@@ -462,6 +461,9 @@ set foldlevelstart=0
 
 " Make the current location sane.
 nnoremap <c-cr> zvzt
+
+" ,f for fold
+vnoremap <Leader>f zf
 
 " Space to toggle folds.
 nnoremap <Space> za
