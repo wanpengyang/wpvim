@@ -311,7 +311,7 @@ augroup ft_python
 
     " au FileType python setlocal omnifunc=pythoncomplete#Complete
     au FileType python setlocal define=^\s*\\(def\\\\|class\\)
-    au FileType python compiler nose
+    "au FileType python compiler nose
     au FileType man nnoremap <buffer> <cr> :q<cr>
     
     " Jesus tapdancing Christ, built-in Python syntax, you couldn't let me
