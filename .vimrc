@@ -388,6 +388,11 @@ let g:rbpt_max = 16
 
 
 " }}}
+" vimpress {{{
+if filereadable($HOME.'/vimrepressrc')
+    source $HOME/vimrepressrc
+endif 
+" }}}
 "------------Session---------------
 let g:session_directory=$HOME.'/.vim/tmp/session'
 let g:session_autoload='yes'
