@@ -389,8 +389,8 @@ let g:rbpt_max = 16
 
 " }}}
 " vimpress {{{
-if filereadable($HOME.'/vimpressrc')
-    source $HOME/vimpressrc
+if filereadable($HOME.'/vimrepressrc')
+    source $HOME/vimrepressrc
 endif 
 " }}}
 "------------Session---------------

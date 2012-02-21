@@ -21,12 +21,19 @@ How to install command-t
 3. in windows , follow the steps here: http://rfbrazier.posterous.com/installing-the-command-t-vim-plugin-on-window
 4. go to ruby/command-t
 5. ruby extconf.rb
-<<<<<<< HEAD
 6. make
 
 Ctags.exe in windows
 1. Download ctags from http://ctags.sourceforge.net/
 2. put ctags.exe in $HOME/ctags
 =======
-6. make
->>>>>>> 2ff0cb14f7a25c177e20d5fcd816491616f43c7f
+Vimpress setup
+1. create a file in your $HOME folder called 'vimrepressrc'
+2. Enter your blog information:
+let VIMPRESS = [{'username':'user',
+                \'password':'pass',
+                \'blog_url':'http://your-first-blog.com/'
+                \},
+                \{'username':'user',
+                 \'blog_url':'http://your-second-blog.com/'
+                \}]
