@@ -184,7 +184,7 @@ nnoremap tn :tabnext<cr>
 nnoremap tp :tabprev<cr>
 nnoremap tt :tabnew<cr>
 
-"}}}
+" }}}
 
 " Various filetype-specific stuff ----------------------------------------- {{{
 " CSS and LessCSS {{{
