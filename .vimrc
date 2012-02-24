@@ -171,11 +171,11 @@ nnoremap g, g,zz
 nnoremap <c-left> 5<c-w>>
 nnoremap <c-right> 5<c-w><
 
-"switch between windows with leader key 
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
+"switch between windows with Ctl + hjkl 
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 "navigate between tabs and buffers
 nnoremap <leader>bn :bnext<cr>
