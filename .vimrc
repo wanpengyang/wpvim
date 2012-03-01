@@ -9,6 +9,7 @@ if has('win32') || has('win64')
     set runtimepath=$HOME\.vim,$VIM\vimfiles,$VIMRUNTIME,$VIM\vimfiles\after,$HOME\.vim\after
     "let Tlist_Ctags_Cmd=$HOME.'\ctags\ctags.exe'
     let g:tagbar_ctags_bin=$HOME.'\ctags\ctags.exe'
+    set lines=100 columns=100
 endif
 " }}}
 
@@ -56,8 +57,8 @@ colorscheme jellybeans
 set encoding=utf-8 "encoding to utf-8
 set fileencoding=utf-8 "set encoding when opening files to utf-8
 set ch=1		" Make command line two lines high
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12,DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
-set guifontwide=SimHei:h11,Monaco:h13 "use SimHei for Chinese, Monaco for mac
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11,DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
+set guifontwide=Yahei_Mono:h11,SimHei:h11,Monaco:h12 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 
 " Remove all the UI cruft
@@ -66,6 +67,7 @@ set go-=l
 set go-=L
 set go-=r
 set go-=R
+set go-=m
 let mapleader = "," "map , as <leader> key instead of \ by default
 "set autochdir		"auto change dir to where the current file is. 
 set hidden 		"switching buffers without saving
@@ -172,10 +174,10 @@ nnoremap <c-left> 5<c-w>>
 nnoremap <c-right> 5<c-w><
 
 "switch between windows with leader key 
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 "navigate between tabs and buffers
 nnoremap <leader>bn :bnext<cr>
@@ -386,6 +388,20 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 
+
+" }}}
+" Markdown {{{
+
+augroup ft_markdown
+    au!
+
+    au BufNewFile,BufRead *.m*down setlocal filetype=markdown
+
+    " Use <localleader>1/2/3 to add headings.
+    au Filetype markdown nnoremap <buffer> <localleader>1 yypVr=
+    au Filetype markdown nnoremap <buffer> <localleader>2 yypVr-
+    au Filetype markdown nnoremap <buffer> <localleader>3 I### <ESC>
+augroup END
 
 " }}}
 "------------Session---------------
