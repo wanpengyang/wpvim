@@ -173,7 +173,7 @@ nnoremap g, g,zz
 nnoremap <c-left> 5<c-w>>
 nnoremap <c-right> 5<c-w><
 
-"switch between windows with leader key 
+"switch between windows with Ctl + hjkl 
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -313,7 +313,7 @@ augroup ft_python
 
     " au FileType python setlocal omnifunc=pythoncomplete#Complete
     au FileType python setlocal define=^\s*\\(def\\\\|class\\)
-    au FileType python compiler nose
+    "au FileType python compiler nose
     au FileType man nnoremap <buffer> <cr> :q<cr>
     
     " Jesus tapdancing Christ, built-in Python syntax, you couldn't let me
@@ -389,6 +389,11 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 
 
+" }}}
+" vimpress {{{
+if filereadable($HOME.'/vimrepressrc')
+    source $HOME/vimrepressrc
+endif 
 " }}}
 " Markdown {{{
 

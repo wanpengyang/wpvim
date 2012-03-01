@@ -52,6 +52,9 @@
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/vimrepress"]
+	path = .vim/bundle/vimrepress
+	url = git://github.com/vim-scripts/VimRepress.git
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
