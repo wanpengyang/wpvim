@@ -16,9 +16,6 @@
 [submodule ".vim/bundle/surround"]
 	path = .vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/command-t"]
-	path = .vim/bundle/command-t
-	url = git://github.com/wincent/Command-T.git
 [submodule ".vim/bundle/buftabs"]
 	path = .vim/bundle/buftabs
 	url = git://github.com/vim-scripts/buftabs.git
@@ -34,15 +31,9 @@
 [submodule ".vim/bundle/vim-session"]
 	path = .vim/bundle/vim-session
 	url = git://github.com/xolox/vim-session.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule ".vim/bundle/vim-powerline"]
 	path = .vim/bundle/vim-powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule ".vim/bundle/vim-autoclose"]
 	path = .vim/bundle/vim-autoclose
 	url = git://github.com/Townk/vim-autoclose.git
@@ -52,9 +43,6 @@
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/vimrepress"]
-	path = .vim/bundle/vimrepress
-	url = git://github.com/vim-scripts/VimRepress.git
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git

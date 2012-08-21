@@ -43,8 +43,6 @@ inoremap jj <ESC>
 "keep undo, swap, backup history files , see the InitializeDirectories()
 "function at the end of the file for directory setup. 
 set history=1000
-set undofile
-set undoreload=1000
 set backup		" keep a backup file
 set noswapfile                    " It's 2012, Vim.
 set modelines=0
@@ -60,6 +58,10 @@ set ch=1		" Make command line two lines high
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h11,DejaVu\ Sans\ Mono:h12,Menlo\ Regular\ for\ Powerline:h12,Monaco:h13 "use DejaVu Sans Mono for english on win/liunux, Monaco for mac
 set guifontwide=Yahei_Mono:h11,SimHei:h11,Monaco:h12 "use SimHei for Chinese, Monaco for mac
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
+
+" remove EOL at the end of the file that vim automatically adds
+au BufWritePre * :set binary | set noeol
+au BufWritePost * :set nobinary | set eol
 
 " Remove all the UI cruft
 set go-=T
@@ -132,7 +134,6 @@ set shiftwidth=4
 set softtabstop=4
 set textwidth=80
 set formatoptions=qrn1
-set colorcolumn=+1
 
 "use sane regx"
 set gdefault					" the /g flag on :s substitutions by default
@@ -390,11 +391,6 @@ let g:rbpt_max = 16
 
 
 " }}}
-" vimpress {{{
-if filereadable($HOME.'/vimrepressrc')
-    source $HOME/vimrepressrc
-endif 
-" }}}
 " Markdown {{{
 
 augroup ft_markdown
@@ -520,7 +516,7 @@ set foldtext=MyFoldText()
 " Powerline {{{
 
 let Powerline_symbols = 'compatible'
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 
 " }}}
 """""Functions""""""""""""""""""""""""""""""""""""""""""""
@@ -537,7 +533,6 @@ function! InitializeDirectories()
   let dir_list = { 
 			  \ 'backup': 'backupdir', 
 			  \ 'views': 'viewdir', 
-	                  \ 'undo' : 'undodir',
 			  \ 'swap': 'directory' }
 
   for [dirname, settingname] in items(dir_list)
