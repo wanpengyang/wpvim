@@ -194,7 +194,7 @@ augroup ft_css
 
     au BufNewFile,BufRead *.less setlocal filetype=less
 
-    au Filetype less,css setlocal foldmethod=marker
+    au Filetype less,css setlocal foldmethod=manual
     au Filetype less,css setlocal foldmarker={,}
     au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
     au Filetype less,css setlocal iskeyword+=-
@@ -267,7 +267,7 @@ augroup END
 augroup ft_javascript
     au!
 
-    au FileType javascript setlocal foldmethod=marker
+    au FileType javascript setlocal foldmethod=manual
     au FileType javascript setlocal foldmarker={,}
 
     " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
@@ -300,7 +300,7 @@ augroup ft_nginx
     au BufRead,BufNewFile /usr/local/etc/nginx/sites-available/* set ft=nginx
     au BufRead,BufNewFile vhost.nginx                            set ft=nginx
 
-    au FileType nginx setlocal foldmethod=marker foldmarker={,}
+    au FileType nginx setlocal foldmethod=manual foldmarker={,}
 augroup END
 
 " }}}
@@ -328,7 +328,7 @@ augroup END
 augroup ft_vim
     au!
 
-    au FileType vim setlocal foldmethod=marker
+    au FileType vim setlocal foldmethod=manual
     au FileType help setlocal textwidth=78
     au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
@@ -462,7 +462,7 @@ let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
 
 " Folding ----------------------------------------------------------------- {{{
 
-set foldlevelstart=0
+"set foldlevelstart=0
 
 " Make the current location sane.
 nnoremap <c-cr> zvzt
@@ -504,7 +504,7 @@ set foldtext=MyFoldText()
 " Powerline {{{
 
 let Powerline_symbols = 'compatible'
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 
 " }}}
 """""Functions""""""""""""""""""""""""""""""""""""""""""""
@@ -546,3 +546,5 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories() 
 """""""""""""""""""""""""""""""""""""""""""""""""""
+"disable auto-commnet 
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
