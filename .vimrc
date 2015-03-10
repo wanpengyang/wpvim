@@ -19,7 +19,6 @@ endif
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'buftabs')
-call add(g:pathogen_disabled, 'command-t')
 
 "}}}
 
@@ -390,11 +389,6 @@ let g:rbpt_max = 16
 
 
 " }}}
-" vimpress {{{
-if filereadable($HOME.'/vimrepressrc')
-    source $HOME/vimrepressrc
-endif 
-" }}}
 " Markdown {{{
 
 augroup ft_markdown
@@ -427,12 +421,6 @@ let g:session_autosave='yes'
     let NERDTreeKeepTreeInNewTab=1
 
 
-"------  Tagbar Options  ------
-" http://adamyoung.net/Exuberant-Ctags-OS-X
-" http://www.vim.org/scripts/script.php?script_id=273
-" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-let g:tagbar_width=26
-noremap <silent> <Leader>y :TagbarToggle<CR>
 
 
 "------  Buffers  ------
