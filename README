@@ -1,5 +1,4 @@
-My own vim setup. The goal is to have one setup file for windows/OSX/Linux
-Main language is PHP and Python. 
+This mini version is for system admin. It doesn't include many coding bundles. 
 
 How to install:
 1. git clone 
@@ -14,26 +13,3 @@ How to install:
 4. git submodule update --init --recursive 
 
 
-
-How to install command-t
-1. make sure Vim is compiled with ruby support.
-2. make sure ruby is installed.
-3. in windows , follow the steps here: http://rfbrazier.posterous.com/installing-the-command-t-vim-plugin-on-window
-4. go to ruby/command-t
-5. ruby extconf.rb
-6. make
-
-Ctags.exe in windows
-1. Download ctags from http://ctags.sourceforge.net/
-2. put ctags.exe in $HOME/ctags
-=======
-Vimpress setup
-1. create a file in your $HOME folder called 'vimrepressrc'
-2. Enter your blog information:
-let VIMPRESS = [{'username':'user',
-                \'password':'pass',
-                \'blog_url':'http://your-first-blog.com/'
-                \},
-                \{'username':'user',
-                 \'blog_url':'http://your-second-blog.com/'
-                \}]
